@@ -8,6 +8,7 @@ export const person = {
     phone: "+91 8869070495",
     github: "https://github.com/WhoSaksham",
     linkedin: "https://www.linkedin.com/in/saksham-agarwal7",
+    resume: "/Saksham's_Resume_FullStack_4Yrs.pdf",
   },
   summary:
     "Full Stack Engineer with 4+ years of experience building and shipping customer-facing web and mobile applications using React.js, Next.js, Node.js, and the MERN stack. Strong focus on performance optimization, UX, and end-to-end feature ownership.",

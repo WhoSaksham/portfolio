@@ -71,7 +71,10 @@ export default function HomePage() {
               >
                 {person.name}
                 <span className="block text-muted-foreground">
-                  {person.role} — {person.tagline}
+                  {person.role}
+                </span>
+                <span className="block text-muted-foreground">
+                  {person.tagline}
                 </span>
               </motion.h1>
 
@@ -96,15 +99,21 @@ export default function HomePage() {
                   </a>
                 </Button>
                 <Button asChild variant="outline" className="rounded-xl">
+                  <a
+                    href={person.links.resume}
+                    target="_blank"
+                    rel="noreferrer"
+                    download
+                  >
+                    Resume <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild variant="ghost" className="rounded-xl">
                   <a href={person.links.linkedin} target="_blank" rel="noreferrer">
                     LinkedIn <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>
-                <Button asChild variant="ghost" className="rounded-xl">
-                  <a href={person.links.github} target="_blank" rel="noreferrer">
-                    GitHub <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </Button>
+                
               </motion.div>
             </div>
 
