@@ -3,7 +3,8 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 import { person } from "@/content/resume";
 import { cn } from "@/lib/utils";
@@ -88,12 +89,12 @@ export function Header() {
             <div className="flex items-center gap-1">
               <Button variant="ghost" size="icon" asChild>
                 <a href={person.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-                  <Github className="h-4 w-4" />
+                  <FaGithub className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
                 <a href={person.links.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn">
-                  <Linkedin className="h-4 w-4" />
+                  <FaLinkedinIn className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="ghost" size="icon" asChild>
