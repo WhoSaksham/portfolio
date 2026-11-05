@@ -1,18 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 
 import "@/app/globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { BuildProvider } from "@/build/BuildProvider";
+import { FlavourProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
+
 export const metadata: Metadata = {
   title: "Saksham Agarwal — Full Stack Engineer",
   description:
-    "Full Stack Engineer portfolio — React, Next.js, Node.js, performance and UX.",
+    "Full Stack Engineer with 4.5+ years building scalable web and mobile apps with React, Next.js, Node.js, Java & Spring Boot, plus AI agents, LangChain and RAG.",
 };
 
 export default function RootLayout({
@@ -21,20 +27,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider>
-          <div className="noise" />
-          <div className="vignette" />
-          <div className="pointer-events-none fixed inset-0 z-0">
-            <div className="absolute left-1/2 top-[-10%] h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_center,hsl(var(--primary)/0.10),transparent_60%)] blur-2xl" />
-            <div className="absolute bottom-[-20%] right-[-10%] h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle_at_center,rgba(120,119,198,0.22),transparent_60%)] blur-2xl" />
-            <div className="absolute bottom-[-20%] left-[-10%] h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.16),transparent_60%)] blur-2xl" />
-          </div>
-          <div className="relative z-10">{children}</div>
-        </ThemeProvider>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${mono.variable}`}>
+      <head>
+        {/* Marks JS as available before first paint, so "unbuilt" ghost styling never applies without JS.
+            Failsafe: if the app bundle never boots, drop the class so content isn't stuck ghosted. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');setTimeout(function(){if(!window.__agentsReady)document.documentElement.classList.remove('js')},4000)",
+          }}
+        />
+      </head>
+      <body>
+        <FlavourProvider>
+          <BuildProvider>{children}</BuildProvider>
+        </FlavourProvider>
       </body>
     </html>
   );
 }
-

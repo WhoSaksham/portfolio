@@ -5,8 +5,8 @@ node_modules/
 .next/
 out/
 
-# production
-build/
+# production (anchored so src/build/ — the animation engine — is not ignored)
+/build/
 dist/
 
 # env files
