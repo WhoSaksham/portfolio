@@ -14,7 +14,7 @@ export function FlavourProvider({ children }: Readonly<{ children: React.ReactNo
     <NextThemesProvider
       attribute="data-flavour"
       themes={FLAVOURS.map((f) => f.id)}
-      defaultTheme="dark"
+      defaultTheme="blueprint"
       storageKey="flavour"
       enableSystem={false}
     >
